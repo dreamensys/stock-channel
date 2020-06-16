@@ -1,0 +1,9 @@
+/Users/work/RiderProjects/StockChannel/StockChannel.Domain/bin/Debug/netcoreapp3.1/StockChannel.Domain.deps.json
+/Users/work/RiderProjects/StockChannel/StockChannel.Domain/bin/Debug/netcoreapp3.1/StockChannel.Domain.dll
+/Users/work/RiderProjects/StockChannel/StockChannel.Domain/bin/Debug/netcoreapp3.1/StockChannel.Domain.pdb
+/Users/work/RiderProjects/StockChannel/StockChannel.Domain/obj/Debug/netcoreapp3.1/StockChannel.Domain.csprojAssemblyReference.cache
+/Users/work/RiderProjects/StockChannel/StockChannel.Domain/obj/Debug/netcoreapp3.1/StockChannel.Domain.AssemblyInfoInputs.cache
+/Users/work/RiderProjects/StockChannel/StockChannel.Domain/obj/Debug/netcoreapp3.1/StockChannel.Domain.AssemblyInfo.cs
+/Users/work/RiderProjects/StockChannel/StockChannel.Domain/obj/Debug/netcoreapp3.1/StockChannel.Domain.csproj.CoreCompileInputs.cache
+/Users/work/RiderProjects/StockChannel/StockChannel.Domain/obj/Debug/netcoreapp3.1/StockChannel.Domain.dll
+/Users/work/RiderProjects/StockChannel/StockChannel.Domain/obj/Debug/netcoreapp3.1/StockChannel.Domain.pdb

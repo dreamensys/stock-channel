@@ -1,0 +1,9 @@
+/Users/work/RiderProjects/StockChannel/StockChannel.Infrastructure/bin/Debug/netcoreapp3.1/StockChannel.Infrastructure.deps.json
+/Users/work/RiderProjects/StockChannel/StockChannel.Infrastructure/bin/Debug/netcoreapp3.1/StockChannel.Infrastructure.dll
+/Users/work/RiderProjects/StockChannel/StockChannel.Infrastructure/bin/Debug/netcoreapp3.1/StockChannel.Infrastructure.pdb
+/Users/work/RiderProjects/StockChannel/StockChannel.Infrastructure/obj/Debug/netcoreapp3.1/StockChannel.Infrastructure.csprojAssemblyReference.cache
+/Users/work/RiderProjects/StockChannel/StockChannel.Infrastructure/obj/Debug/netcoreapp3.1/StockChannel.Infrastructure.AssemblyInfoInputs.cache
+/Users/work/RiderProjects/StockChannel/StockChannel.Infrastructure/obj/Debug/netcoreapp3.1/StockChannel.Infrastructure.AssemblyInfo.cs
+/Users/work/RiderProjects/StockChannel/StockChannel.Infrastructure/obj/Debug/netcoreapp3.1/StockChannel.Infrastructure.csproj.CoreCompileInputs.cache
+/Users/work/RiderProjects/StockChannel/StockChannel.Infrastructure/obj/Debug/netcoreapp3.1/StockChannel.Infrastructure.dll
+/Users/work/RiderProjects/StockChannel/StockChannel.Infrastructure/obj/Debug/netcoreapp3.1/StockChannel.Infrastructure.pdb

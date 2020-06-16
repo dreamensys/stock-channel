@@ -1,0 +1,46 @@
+﻿@page
+
+<div class="container">
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-2">User Name</div>
+        <div class="col-4"><input type="text" id="userInput" /></div>
+    </div><br/>
+    <textarea readonly id="messagesList" class="chat" ></textarea><br/>
+    <input type="text" id="messageInput"/>
+    <input type="button" id="sendButton" value="Send"/>
+    
+
+
+    @* <div class="row"> *@
+    @*     <div class="col-2">Message</div> *@
+    @*     <div class="col-4"><input type="text" id="messageInput" /></div> *@
+    @* </div> *@
+    @* <div class="row">&nbsp;</div> *@
+    @* <div class="row"> *@
+    @*     <div class="col-6"> *@
+    @*         <input type="button" id="sendButton" value="Send Message" /> *@
+    @*     </div> *@
+    @* </div> *@
+</div>
+<div class="row">
+    <div class="col-12">
+        <hr />
+    </div>
+</div>
+<style>
+    .chat {
+        resize: none;
+        width:500px;
+        height: 500px;
+    }
+    
+    #messageInput {
+        width:450px;
+    }
+</style>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<script src="~/lib/signalr/signalr.js"></script>
+<script src="~/js/stockchannel.js"></script>

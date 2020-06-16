@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "dgSpecHash": "rnKELaQJKL8lVe/jQYemHAqN54bwO5+zWXDF1hatqVbxomzx5fZ72xRWfgQPGCZURwcvUEDw9NyxTqPtjeiwfQ==",
+  "success": true,
+  "projectFilePath": "/Users/work/RiderProjects/StockChannel/StockChannel.StockBot.API/StockChannel.StockBot.API.csproj",
+  "expectedPackageFiles": [
+    "/Users/work/.nuget/packages/microsoft.aspnetcore.jsonpatch/3.0.0/microsoft.aspnetcore.jsonpatch.3.0.0.nupkg.sha512",
+    "/Users/work/.nuget/packages/microsoft.aspnetcore.mvc.newtonsoftjson/3.0.0/microsoft.aspnetcore.mvc.newtonsoftjson.3.0.0.nupkg.sha512",
+    "/Users/work/.nuget/packages/microsoft.csharp/4.6.0/microsoft.csharp.4.6.0.nupkg.sha512",
+    "/Users/work/.nuget/packages/microsoft.extensions.configuration/5.0.0-preview.5.20278.1/microsoft.extensions.configuration.5.0.0-preview.5.20278.1.nupkg.sha512",
+    "/Users/work/.nuget/packages/microsoft.extensions.configuration.abstractions/5.0.0-preview.5.20278.1/microsoft.extensions.configuration.abstractions.5.0.0-preview.5.20278.1.nupkg.sha512",
+    "/Users/work/.nuget/packages/microsoft.extensions.dependencyinjection/5.0.0-preview.5.20278.1/microsoft.extensions.dependencyinjection.5.0.0-preview.5.20278.1.nupkg.sha512",
+    "/Users/work/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/5.0.0-preview.5.20278.1/microsoft.extensions.dependencyinjection.abstractions.5.0.0-preview.5.20278.1.nupkg.sha512",
+    "/Users/work/.nuget/packages/microsoft.extensions.http/5.0.0-preview.5.20278.1/microsoft.extensions.http.5.0.0-preview.5.20278.1.nupkg.sha512",
+    "/Users/work/.nuget/packages/microsoft.extensions.logging/5.0.0-preview.5.20278.1/microsoft.extensions.logging.5.0.0-preview.5.20278.1.nupkg.sha512",
+    "/Users/work/.nuget/packages/microsoft.extensions.logging.abstractions/5.0.0-preview.5.20278.1/microsoft.extensions.logging.abstractions.5.0.0-preview.5.20278.1.nupkg.sha512",
+    "/Users/work/.nuget/packages/microsoft.extensions.options/5.0.0-preview.5.20278.1/microsoft.extensions.options.5.0.0-preview.5.20278.1.nupkg.sha512",
+    "/Users/work/.nuget/packages/microsoft.extensions.primitives/5.0.0-preview.5.20278.1/microsoft.extensions.primitives.5.0.0-preview.5.20278.1.nupkg.sha512",
+    "/Users/work/.nuget/packages/newtonsoft.json/12.0.3/newtonsoft.json.12.0.3.nupkg.sha512",
+    "/Users/work/.nuget/packages/newtonsoft.json.bson/1.0.2/newtonsoft.json.bson.1.0.2.nupkg.sha512",
+    "/Users/work/.nuget/packages/rabbitmq.client/6.1.0/rabbitmq.client.6.1.0.nupkg.sha512",
+    "/Users/work/.nuget/packages/system.memory/4.5.4/system.memory.4.5.4.nupkg.sha512",
+    "/Users/work/.nuget/packages/system.runtime.compilerservices.unsafe/5.0.0-preview.5.20278.1/system.runtime.compilerservices.unsafe.5.0.0-preview.5.20278.1.nupkg.sha512",
+    "/Users/work/.nuget/packages/system.threading.channels/4.7.1/system.threading.channels.4.7.1.nupkg.sha512"
+  ],
+  "logs": []
+}
