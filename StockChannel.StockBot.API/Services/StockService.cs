@@ -8,36 +8,30 @@ namespace StockChannel.StockBot.API.Services
     public class StockService : IStockService
     {
         private readonly IAPIRequestHandler _requestHandler;
-        private const string STOCKS_URL = @"https://stooq.com/q/l/?s=aapl.us&f=sd2t2ohlcv&h&e=csv";
         
         public StockService(IAPIRequestHandler requestHandler)
         {
             _requestHandler = requestHandler ?? throw new ArgumentNullException(nameof(requestHandler));
         }
         
-        public async Task<string> GetStockQuote(string stock_code)
+        public async Task<string> GetStockQuote(string stockCode)
         {
-            var result = string.Empty;
-            //var stock = await _requestHandler.Get<Stock>(STOCKS_URL);
-            var now = DateTime.Now;
-            var stock = new Stock()
+            var url = @getStockURL(stockCode);
+            Stock stock;
+            try
             {
-                Symbol = "AAPL.US",
-                Date = now,
-                Time = new TimeSpan(now.Ticks),
-                Open = 344.72,
-                High = 344.72,
-                Low = 344.72,
-                Close = 344.72,
-                Volume = 234234
-            };
+                stock = await _requestHandler.Get<Stock>(url, "CSV");
+            }
+            catch
+            {
+                return $"No data found for {stockCode}";
+            }
+            
             return BuildMessage(stock);
         }
 
-        private string BuildMessage(Stock model)
-        {
-            //APPL.US quote is $93.42 per share
-            return $"{model.Symbol} quote is ${model.Close} per share.";
-        }
+        private string BuildMessage(Stock model) => $"{model.Symbol} quote is ${model.Close} per share.";
+        private string getStockURL(string stockCode) => @$"https://stooq.com/q/l/?s={stockCode}&f=sd2t2ohlcv&h&e=csv";
+
     }
 }

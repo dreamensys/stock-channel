@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v3.1": {
       "StockChannel.Infrastructure/1.0.0": {
         "dependencies": {
+          "CsvHelper": "15.0.5",
           "Microsoft.Extensions.Configuration": "5.0.0-preview.5.20278.1",
           "Microsoft.Extensions.Http": "5.0.0-preview.5.20278.1",
           "Newtonsoft.Json": "12.0.3",
@@ -17,6 +18,18 @@
           "StockChannel.Infrastructure.dll": {}
         }
       },
+      "CsvHelper/15.0.5": {
+        "dependencies": {
+          "Microsoft.CSharp": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.1/CsvHelper.dll": {
+            "assemblyVersion": "15.0.0.0",
+            "fileVersion": "15.0.5.0"
+          }
+        }
+      },
+      "Microsoft.CSharp/4.5.0": {},
       "Microsoft.Extensions.Configuration/5.0.0-preview.5.20278.1": {
         "dependencies": {
           "Microsoft.Extensions.Configuration.Abstractions": "5.0.0-preview.5.20278.1",
@@ -162,6 +175,20 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "CsvHelper/15.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HPoE5nASoFXqoXKSi5yEBam7TzDrtC8WESA4xq53JtPKV8Mm+IKRuN+FJyMoJg1Whv/NG4JiCUs9yUcaSY/ziQ==",
+      "path": "csvhelper/15.0.5",
+      "hashPath": "csvhelper.15.0.5.nupkg.sha512"
+    },
+    "Microsoft.CSharp/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kaj6Wb4qoMuH3HySFJhxwQfe8R/sJsNJnANrvv8WdFPMoNbKY5htfNscv+LHCu5ipz+49m2e+WQXpLXr9XYemQ==",
+      "path": "microsoft.csharp/4.5.0",
+      "hashPath": "microsoft.csharp.4.5.0.nupkg.sha512"
     },
     "Microsoft.Extensions.Configuration/5.0.0-preview.5.20278.1": {
       "type": "package",

@@ -29,6 +29,10 @@
   "frameworks": {
     "netcoreapp3.1": {
       "dependencies": {
+        "CsvHelper": {
+          "target": "Package",
+          "version": "[15.0.5, )"
+        },
         "Microsoft.Extensions.Configuration": {
           "target": "Package",
           "version": "[5.0.0-preview.5.20278.1, )"

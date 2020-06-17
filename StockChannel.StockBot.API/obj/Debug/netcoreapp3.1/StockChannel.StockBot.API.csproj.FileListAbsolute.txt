@@ -38,3 +38,4 @@
 /Users/work/RiderProjects/StockChannel/StockChannel.StockBot.API/bin/Debug/netcoreapp3.1/System.Threading.Channels.dll
 /Users/work/RiderProjects/StockChannel/StockChannel.StockBot.API/bin/Debug/netcoreapp3.1/StockChannel.Domain.dll
 /Users/work/RiderProjects/StockChannel/StockChannel.StockBot.API/bin/Debug/netcoreapp3.1/StockChannel.Domain.pdb
+/Users/work/RiderProjects/StockChannel/StockChannel.StockBot.API/bin/Debug/netcoreapp3.1/CsvHelper.dll
