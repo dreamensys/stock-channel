@@ -11,7 +11,6 @@ namespace StockChannel.UI.Hubs
 {
     public class StockChannelHub : Hub
     {
-        private const int LIMIT_MESSAGES = 50;
         private readonly IMessageHandlerService _messageHandlerService;
         public static string HubName { get; set; } = "StockChannelHub";
         private static List<MessageModel> _messagesList = new List<MessageModel>();
@@ -34,19 +33,13 @@ namespace StockChannel.UI.Hubs
 
         public async Task SendMessage(MessageModel newMessage)
         {
-            // var newMessage = new MessageModel()
-            // {
-            //     Content = content,
-            //     Sender = sender,
-            //     SentAt = DateTime.Now
-            // };
             try
             {
+                var list= await _messageHandlerService.GetMessages(50);
                 _messagesList.Add(newMessage);
-                var list = GetMessagesList();
                 // await Clients.All.SendAsync("NewMessage", newMessage);
-                await Clients.All.SendAsync("NewMessageList", list);
-                //await _messageHandlerService.SendMessageAsync(newMessage);
+                //await Clients.All.SendAsync("NewMessageList", list);
+                await _messageHandlerService.SendMessageAsync(newMessage);
             }
             catch
             {
@@ -56,9 +49,6 @@ namespace StockChannel.UI.Hubs
             
         }
 
-        private List<MessageModel> GetMessagesList()
-        {
-            return _messagesList.OrderByDescending(x => x.SentAt).Take(LIMIT_MESSAGES).ToList();
-        }
+        
     }
 }

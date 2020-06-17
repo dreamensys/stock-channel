@@ -1,9 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using StockChannel.Domain.Entities;
 using StockChannel.Infrastructure.Interfaces;
+using StockChannel.UI.DataAccess;
 using StockChannel.UI.Models;
+using StockChannel.UI.Repositories;
 
 namespace StockChannel.UI.Services
 {
@@ -12,11 +16,13 @@ namespace StockChannel.UI.Services
         private string _commandValue;
         private string _commandUrl;
         private readonly IQueueHandler _queueHandler;
+        private readonly IMessageRepository _messageRepository;
         private readonly IAPIRequestHandler _apiRequestHandler;
-        public MessageHandlerService(IQueueHandler queueHandler, IAPIRequestHandler apiRequestHandler)
+        public MessageHandlerService(IQueueHandler queueHandler, IAPIRequestHandler apiRequestHandler, IMessageRepository messageRepository)
         {
             _queueHandler = queueHandler ?? throw new ArgumentNullException(nameof(queueHandler));
             _apiRequestHandler = apiRequestHandler ?? throw new ArgumentNullException(nameof(apiRequestHandler));
+            _messageRepository = messageRepository ?? throw new ArgumentNullException(nameof(messageRepository));
         }
         public async Task SendMessageAsync(MessageModel model)
         {
@@ -33,17 +39,37 @@ namespace StockChannel.UI.Services
                 _commandUrl = $"{_commandUrl}{_commandValue}";
                 try
                 {
-                    var botResponse = await _apiRequestHandler.Get<string>(_commandUrl);
+                    var botResponse = await _apiRequestHandler.Get<string>(_commandUrl, "");
                     messagePayload.Content = botResponse;
                 }
                 catch (Exception e)
                 {
                     messagePayload.Content = "StockBot: An error occurred unexpectedly.";
                 }
-                
             }
-
+            else
+            {
+                _messageRepository.InsertMessageAsync(messagePayload);
+            }
             _queueHandler.Publish(messagePayload);
+        }
+
+        public async Task<IEnumerable<ChatMessage>> GetMessages(int top)
+        {
+            var results = await _messageRepository.GetAllMessagesAsync();
+            var sorted = results.OrderByDescending(m => m.SentAt).Take(top);
+            return sorted;
+        }
+
+        public async Task InsertMessage(MessageModel model)
+        {
+            var message = new ChatMessage()
+            {
+                Sender = model.Sender,
+                SentAt = model.SentAt,
+                Content = model.Content
+            };
+            await _messageRepository.InsertMessageAsync(message);
         }
 
         public void Init(Action<MessageModel> callback)
