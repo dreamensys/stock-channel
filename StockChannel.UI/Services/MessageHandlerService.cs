@@ -37,6 +37,7 @@ namespace StockChannel.UI.Services
             if (valid)
             {
                 _commandUrl = $"{_commandUrl}{_commandValue}";
+                messagePayload.Sender = "StockBot";
                 try
                 {
                     var botResponse = await _apiRequestHandler.Get<string>(_commandUrl, "");
@@ -44,24 +45,31 @@ namespace StockChannel.UI.Services
                 }
                 catch (Exception e)
                 {
-                    messagePayload.Content = "StockBot: An error occurred unexpectedly.";
+                    messagePayload.Content = "An error occurred unexpectedly.";
                 }
             }
             else
             {
-                _messageRepository.InsertMessageAsync(messagePayload);
+                try
+                {
+                    await _messageRepository.InsertMessageAsync(messagePayload);
+                }
+                catch (Exception e)
+                {
+                    
+                }
             }
             _queueHandler.Publish(messagePayload);
         }
 
-        public async Task<IEnumerable<ChatMessage>> GetMessages(int top)
+        public async Task<IEnumerable<ChatMessage>> GetMessagesAsync(int top)
         {
             var results = await _messageRepository.GetAllMessagesAsync();
             var sorted = results.OrderByDescending(m => m.SentAt).Take(top);
             return sorted;
         }
 
-        public async Task InsertMessage(MessageModel model)
+        public async Task InsertMessageAsync(MessageModel model)
         {
             var message = new ChatMessage()
             {
@@ -72,10 +80,6 @@ namespace StockChannel.UI.Services
             await _messageRepository.InsertMessageAsync(message);
         }
 
-        public void Init(Action<MessageModel> callback)
-        {
-            _queueHandler.Consume<MessageModel>("", callback);
-        }
         private bool IsValidBotCommand(string messageContent)
         {
             if (!messageContent.StartsWith("/"))

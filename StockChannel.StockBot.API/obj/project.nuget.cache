@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "dc1HsS3Cd48LtpHQepD6SilLP2isiAxO06M4Tpo3/W6NzVlpRayQmAR+sfwsSBQMrY0DYyXInzZAPielkmpX1w==",
+  "dgSpecHash": "CKP7mpAypzFP2rCtxAx/QUJBj8kkbTGgFySQCsPbjld/rUFk1f10fyGPl9xO8ZMFbFlR0xbmzWdJtq+eguabTQ==",
   "success": true,
   "projectFilePath": "/Users/work/RiderProjects/StockChannel/StockChannel.StockBot.API/StockChannel.StockBot.API.csproj",
   "expectedPackageFiles": [

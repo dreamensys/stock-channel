@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockChannel.Infrastructure
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockChannel.Domain", "StockChannel.Domain\StockChannel.Domain.csproj", "{3FF38E6C-FCFA-40D9-87CE-FD8FC0904439}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockChannel.Test", "StockChannel.Test\StockChannel.Test.csproj", "{2B5CD6BB-5353-4543-AAE2-C678FDE5D0DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{3FF38E6C-FCFA-40D9-87CE-FD8FC0904439}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FF38E6C-FCFA-40D9-87CE-FD8FC0904439}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FF38E6C-FCFA-40D9-87CE-FD8FC0904439}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B5CD6BB-5353-4543-AAE2-C678FDE5D0DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B5CD6BB-5353-4543-AAE2-C678FDE5D0DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B5CD6BB-5353-4543-AAE2-C678FDE5D0DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B5CD6BB-5353-4543-AAE2-C678FDE5D0DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

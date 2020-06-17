@@ -18,27 +18,12 @@ namespace StockChannel.UI.Hubs
         public StockChannelHub(IMessageHandlerService messageHandlerService)
         {
             _messageHandlerService = messageHandlerService ?? throw new ArgumentNullException(nameof(messageHandlerService));
-            _messageHandlerService.Init(y => BroadcastMessage(y));
-        }
-
-        public async Task BroadcastMessage(MessageModel model)
-        {
-            await Clients.All.SendAsync("NewMessage", model);
-        }
-        
-        public async Task GetAllMessages()
-        {
-            await Clients.All.SendAsync("ReceiveMessage", _messagesList);
         }
 
         public async Task SendMessage(MessageModel newMessage)
         {
             try
             {
-                var list= await _messageHandlerService.GetMessages(50);
-                _messagesList.Add(newMessage);
-                // await Clients.All.SendAsync("NewMessage", newMessage);
-                //await Clients.All.SendAsync("NewMessageList", list);
                 await _messageHandlerService.SendMessageAsync(newMessage);
             }
             catch
@@ -48,7 +33,5 @@ namespace StockChannel.UI.Hubs
             }
             
         }
-
-        
     }
 }

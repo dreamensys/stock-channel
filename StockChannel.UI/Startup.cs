@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -10,6 +11,7 @@ using StockChannel.UI.DataAccess;
 using StockChannel.UI.Hubs;
 using StockChannel.UI.Repositories;
 using StockChannel.UI.Services;
+using IApplicationLifetime = Microsoft.Extensions.Hosting.IApplicationLifetime;
 
 namespace StockChannel.UI
 {
@@ -40,6 +42,8 @@ namespace StockChannel.UI
             services.AddScoped<IMessageRepository, MessageRepository>();
             services.AddScoped<IMessageHandlerService, MessageHandlerService>();
             
+            services.AddSingleton<IRabbitMQService, RabbitMQService>(); // Need a single instance so we can keep the referenced connect with RabbitMQ open
+
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString(AppDbContext.connectionName)));
@@ -48,7 +52,7 @@ namespace StockChannel.UI
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApplicationLifetime lifetime)
         {
             if (env.IsDevelopment())
             {
@@ -60,7 +64,7 @@ namespace StockChannel.UI
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            lifetime.ApplicationStarted.Register(() => RegisterSignalRWithRabbitMQ(app.ApplicationServices));
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -77,6 +81,12 @@ namespace StockChannel.UI
             });
 
             app.UseAuthentication();
+        }
+        public void RegisterSignalRWithRabbitMQ(IServiceProvider serviceProvider)
+        {
+            // Connect to RabbitMQ
+            var rabbitMQService = (IRabbitMQService)serviceProvider.GetService(typeof(IRabbitMQService));
+            rabbitMQService.Connect();
         }
     }
 }

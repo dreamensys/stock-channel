@@ -16,7 +16,7 @@ namespace StockChannel.UI.DataAccess
                 .AddJsonFile("appsettings.json")
                 .Build();
             var builder = new DbContextOptionsBuilder<AppDbContext>();
-            var connectionString = configuration.GetConnectionString("DefaultConnection");
+            var connectionString = configuration.GetConnectionString(AppDbContext.connectionName);
             builder.UseSqlServer(connectionString);
             return new AppDbContext(builder.Options);
         }
@@ -32,11 +32,6 @@ namespace StockChannel.UI.DataAccess
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            //builder.Entity<ChatMessage>().OwnsOne(x => x.);
-            // builder.Entity<ChatMessage>()
-            //     .HasOne<JobsityUser>(a => a.Sender)
-            //     .WithMany(d => d.Messages)
-            //     .HasForeignKey(d => d.UserID);
         }
 
         public DbSet<ChatMessage> Messages { get; set; }

@@ -9,8 +9,7 @@ namespace StockChannel.UI.Services
     public interface IMessageHandlerService
     {
         Task SendMessageAsync(MessageModel model);
-        public Task<IEnumerable<ChatMessage>> GetMessages(int top);
-        public Task InsertMessage(MessageModel model);
-        void Init(Action<MessageModel> callback);
+        public Task<IEnumerable<ChatMessage>> GetMessagesAsync(int top);
+        public Task InsertMessageAsync(MessageModel model);
     }
 }

@@ -20,9 +20,8 @@ namespace StockChannel.UI.Repositories
 
         public async Task<IEnumerable<ChatMessage>> GetAllMessagesAsync()
         {
-            var jj = _context.Messages;
-            var messages = await jj.ToListAsync();
-
+            List<ChatMessage> messages = new List<ChatMessage>();
+            messages = await _context.Messages.ToListAsync();
             return messages;
         }
 

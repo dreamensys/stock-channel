@@ -4,8 +4,8 @@ var connection = new signalR.HubConnectionBuilder().withUrl("/StockChannelHub").
 
 document.getElementById("sendButton").disabled = true;
 
-connection.on("NewMessage", appendMessageToChat);
-connection.on("NewMessageList", setMessagesToChat);
+connection.on("messageReceived",appendMessageToChat);
+connection.on("messageListReceived",setMessagesToChat);
 
 connection.start().then(function () {
     document.getElementById("sendButton").disabled = false;
@@ -24,7 +24,6 @@ function onSendButtonClicked(event) {
 }
 
 /* FUNCTIONS */
-
 function sendNewMessageToServer() {
     var user = document.getElementById("userInput").value;
     var newMessage = {
@@ -39,10 +38,11 @@ function sendNewMessageToServer() {
 function appendMessageToChat(element) {
     const message = element.content;
     const msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    const encodedMsg = element.sender + " says " + msg;
-    var li = document.createElement("li");
-    li.textContent = encodedMsg;
-    document.getElementById("messagesList").appendChild(li);
+    const encodedMsg = `${element.sender}: ${msg}\n`;
+
+    var chat = document.getElementById("messagesList");
+    chat.value += encodedMsg;
+    chat.scrollTop = 99999;
 }
 function setMessagesToChat(messages) {
     var chat = document.getElementById("messagesList");
@@ -53,3 +53,4 @@ function setMessagesToChat(messages) {
     chat.value = text;
     chat.scrollTop = 99999;
 }
+
