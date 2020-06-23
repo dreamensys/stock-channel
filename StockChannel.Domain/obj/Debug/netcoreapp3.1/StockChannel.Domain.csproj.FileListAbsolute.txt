@@ -7,3 +7,12 @@
 /Users/work/RiderProjects/StockChannel/StockChannel.Domain/obj/Debug/netcoreapp3.1/StockChannel.Domain.csproj.CoreCompileInputs.cache
 /Users/work/RiderProjects/StockChannel/StockChannel.Domain/obj/Debug/netcoreapp3.1/StockChannel.Domain.dll
 /Users/work/RiderProjects/StockChannel/StockChannel.Domain/obj/Debug/netcoreapp3.1/StockChannel.Domain.pdb
+D:\Users\dreamensys\Documents\projects\stock-channel\StockChannel.Domain\bin\Debug\netcoreapp3.1\StockChannel.Domain.deps.json
+D:\Users\dreamensys\Documents\projects\stock-channel\StockChannel.Domain\bin\Debug\netcoreapp3.1\StockChannel.Domain.dll
+D:\Users\dreamensys\Documents\projects\stock-channel\StockChannel.Domain\bin\Debug\netcoreapp3.1\StockChannel.Domain.pdb
+D:\Users\dreamensys\Documents\projects\stock-channel\StockChannel.Domain\obj\Debug\netcoreapp3.1\StockChannel.Domain.AssemblyInfoInputs.cache
+D:\Users\dreamensys\Documents\projects\stock-channel\StockChannel.Domain\obj\Debug\netcoreapp3.1\StockChannel.Domain.AssemblyInfo.cs
+D:\Users\dreamensys\Documents\projects\stock-channel\StockChannel.Domain\obj\Debug\netcoreapp3.1\StockChannel.Domain.csproj.CoreCompileInputs.cache
+D:\Users\dreamensys\Documents\projects\stock-channel\StockChannel.Domain\obj\Debug\netcoreapp3.1\StockChannel.Domain.dll
+D:\Users\dreamensys\Documents\projects\stock-channel\StockChannel.Domain\obj\Debug\netcoreapp3.1\StockChannel.Domain.pdb
+D:\Users\dreamensys\Documents\projects\stock-channel\StockChannel.Domain\obj\Debug\netcoreapp3.1\StockChannel.Domain.csprojAssemblyReference.cache

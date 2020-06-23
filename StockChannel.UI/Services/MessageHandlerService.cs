@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.SignalR;
 using StockChannel.Domain.Entities;
 using StockChannel.Infrastructure.Interfaces;
-using StockChannel.UI.DataAccess;
+using StockChannel.UI.Hubs;
 using StockChannel.UI.Models;
 using StockChannel.UI.Repositories;
 
@@ -18,11 +18,13 @@ namespace StockChannel.UI.Services
         private readonly IQueueHandler _queueHandler;
         private readonly IMessageRepository _messageRepository;
         private readonly IAPIRequestHandler _apiRequestHandler;
-        public MessageHandlerService(IQueueHandler queueHandler, IAPIRequestHandler apiRequestHandler, IMessageRepository messageRepository)
+        private readonly IServiceProvider _serviceProvider;
+        public MessageHandlerService(IQueueHandler queueHandler, IAPIRequestHandler apiRequestHandler, IMessageRepository messageRepository, IServiceProvider serviceProvider)
         {
             _queueHandler = queueHandler ?? throw new ArgumentNullException(nameof(queueHandler));
             _apiRequestHandler = apiRequestHandler ?? throw new ArgumentNullException(nameof(apiRequestHandler));
             _messageRepository = messageRepository ?? throw new ArgumentNullException(nameof(messageRepository));
+            _serviceProvider = serviceProvider;
         }
         public async Task SendMessageAsync(MessageModel model)
         {
@@ -33,33 +35,22 @@ namespace StockChannel.UI.Services
                 SentAt = model.SentAt
             };
 
-            var valid = IsValidBotCommand(messagePayload.Content);
-            if (valid)
+            var validBotCommand = IsValidBotCommand(messagePayload.Content);
+            if (validBotCommand)
             {
-                _commandUrl = $"{_commandUrl}{_commandValue}";
-                messagePayload.Sender = "StockBot";
-                try
-                {
-                    var botResponse = await _apiRequestHandler.Get<string>(_commandUrl, "");
-                    messagePayload.Content = botResponse;
-                }
-                catch (Exception e)
-                {
-                    messagePayload.Content = "An error occurred unexpectedly.";
-                }
+                await QueryBots(messagePayload);
             }
-            else
+
+            var published = PublishDataOnQueue(messagePayload);
+            if (!published)
             {
-                try
-                {
-                    await _messageRepository.InsertMessageAsync(messagePayload);
-                }
-                catch (Exception e)
-                {
-                    
-                }
+                var chatHub = (IHubContext<StockChannelHub>)_serviceProvider.GetService(typeof(IHubContext<StockChannelHub>));
+                await chatHub.Clients.All.SendAsync("messageReceived", messagePayload);
             }
-            _queueHandler.Publish(messagePayload);
+
+            if (!validBotCommand) { 
+                await PersistMessage(messagePayload);
+            }
         }
 
         public async Task<IEnumerable<ChatMessage>> GetMessagesAsync(int top)
@@ -80,6 +71,51 @@ namespace StockChannel.UI.Services
             await _messageRepository.InsertMessageAsync(message);
         }
 
+
+        private bool PublishDataOnQueue(ChatMessage messagePayload)
+        {
+            try
+            {
+                _queueHandler.Publish(messagePayload);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        private async Task<bool> QueryBots(ChatMessage messagePayload)
+        {
+            _commandUrl = $"{_commandUrl}{_commandValue}";
+            messagePayload.Sender = "StockBot";
+            try
+            {
+                // Connecting to StockBot API
+                var botResponse = await _apiRequestHandler.Get<string>(_commandUrl, "");
+                messagePayload.Content = botResponse;
+                return true;
+            }
+            catch (Exception e)
+            {
+                messagePayload.Content = "An error occurred unexpectedly.";
+                return false;
+            }
+        }
+        private async Task<bool> PersistMessage(ChatMessage messagePayload)
+        {
+            try
+            {
+                // Storing the message into the database
+                await _messageRepository.InsertMessageAsync(messagePayload);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
         private bool IsValidBotCommand(string messageContent)
         {
             if (!messageContent.StartsWith("/"))
@@ -88,22 +124,22 @@ namespace StockChannel.UI.Services
             var body = messageContent.Substring(1);
             if (body.Contains("/"))
                 return false;
-            
+
             var equalMarkIndex = body.IndexOf('=');
-            var commandName = body.Substring(0,equalMarkIndex);
+            var commandName = body.Substring(0, equalMarkIndex);
             var bots = GetInstalledBots();
             bots.TryGetValue(commandName, out _commandUrl);
             if (_commandUrl == string.Empty)
                 return false;
-            
+
             _commandValue = body.Substring(equalMarkIndex + 1).Trim();
 
             return true;
         }
-    
+
         private Dictionary<string, string> GetInstalledBots() => new Dictionary<string, string>()
         {
-            {"stock", "http://localhost:5000/api/bots/stocks/"}
+            {"stock", "http://localhost:17028/api/bots/stock/"}
         };
 
     }

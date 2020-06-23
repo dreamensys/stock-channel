@@ -16,15 +16,27 @@ namespace StockChannel.Infrastructure.Messaging
 
         public RabbitMQHandler()
         {
-            var factory = new ConnectionFactory();
-            factory.HostName = "localhost";
-            var connection = factory.CreateConnection();
-            _channel = connection.CreateModel();
-            _channel.ExchangeDeclare(_exchangeName, ExchangeType.Fanout);
+            try
+            {
+                var factory = new ConnectionFactory();
+                factory.HostName = "localhost";
+                var connection = factory.CreateConnection();
+                _channel = connection.CreateModel();
+                _channel.ExchangeDeclare(_exchangeName, ExchangeType.Fanout);
+            }
+            catch (Exception)
+            {
+
+                //TODO set a log here
+            }
+
         }
 
         public void Publish<TMessage>(TMessage message)
         {
+            if (_channel == null)
+                throw new ArgumentNullException("The application could not stablish a connection to the queue");
+
             var json = JsonConvert.SerializeObject(message);
             var body = Encoding.UTF8.GetBytes(json);
 
@@ -33,7 +45,9 @@ namespace StockChannel.Infrastructure.Messaging
 
         public void Consume<TMessage>(string queueName, Action<TMessage> action)
         {
-            
+            if (_channel == null)
+                throw new ArgumentNullException("The application could not stablish a connection to the queue");
+
             queueName = _channel.QueueDeclare().QueueName;
             _channel.QueueBind(queue: queueName, exchange: _exchangeName, routingKey: "");
             var consumer = new EventingBasicConsumer(_channel);
