@@ -7,3 +7,11 @@
 /Users/work/RiderProjects/StockChannel/StockChannel.Infrastructure/obj/Debug/netcoreapp3.1/StockChannel.Infrastructure.csproj.CoreCompileInputs.cache
 /Users/work/RiderProjects/StockChannel/StockChannel.Infrastructure/obj/Debug/netcoreapp3.1/StockChannel.Infrastructure.dll
 /Users/work/RiderProjects/StockChannel/StockChannel.Infrastructure/obj/Debug/netcoreapp3.1/StockChannel.Infrastructure.pdb
+D:\Users\dreamensys\Documents\projects\stock-channel\StockChannel.Infrastructure\bin\Debug\netcoreapp3.1\StockChannel.Infrastructure.deps.json
+D:\Users\dreamensys\Documents\projects\stock-channel\StockChannel.Infrastructure\bin\Debug\netcoreapp3.1\StockChannel.Infrastructure.dll
+D:\Users\dreamensys\Documents\projects\stock-channel\StockChannel.Infrastructure\bin\Debug\netcoreapp3.1\StockChannel.Infrastructure.pdb
+D:\Users\dreamensys\Documents\projects\stock-channel\StockChannel.Infrastructure\obj\Debug\netcoreapp3.1\StockChannel.Infrastructure.AssemblyInfoInputs.cache
+D:\Users\dreamensys\Documents\projects\stock-channel\StockChannel.Infrastructure\obj\Debug\netcoreapp3.1\StockChannel.Infrastructure.AssemblyInfo.cs
+D:\Users\dreamensys\Documents\projects\stock-channel\StockChannel.Infrastructure\obj\Debug\netcoreapp3.1\StockChannel.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Users\dreamensys\Documents\projects\stock-channel\StockChannel.Infrastructure\obj\Debug\netcoreapp3.1\StockChannel.Infrastructure.dll
+D:\Users\dreamensys\Documents\projects\stock-channel\StockChannel.Infrastructure\obj\Debug\netcoreapp3.1\StockChannel.Infrastructure.pdb

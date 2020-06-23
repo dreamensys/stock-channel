@@ -28,10 +28,9 @@ namespace StockChannel.UI.Hubs
             }
             catch
             {
-                newMessage.Content = "Broadcast failed!";
-                _messageHandlerService.SendMessageAsync(newMessage);
+                // log message
             }
-            
+
         }
     }
 }

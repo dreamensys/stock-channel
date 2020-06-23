@@ -86,7 +86,15 @@ namespace StockChannel.UI
         {
             // Connect to RabbitMQ
             var rabbitMQService = (IRabbitMQService)serviceProvider.GetService(typeof(IRabbitMQService));
-            rabbitMQService.Connect();
+            try
+            {
+                rabbitMQService.Connect();
+            }
+            catch (Exception)
+            {
+
+                //TODO: log this issue
+            }
         }
     }
 }

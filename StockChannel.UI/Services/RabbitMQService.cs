@@ -13,22 +13,34 @@ public class RabbitMQService : IRabbitMQService
     private readonly IModel _channel;
     private readonly string exchangeName = "stockchannel";
     private readonly IServiceProvider _serviceProvider;
- 
+
     public RabbitMQService(IServiceProvider serviceProvider)
     {
-        _factory = new ConnectionFactory() { HostName = "localhost" };
-        _connection = _factory.CreateConnection();
-        _channel = _connection.CreateModel();
-        _serviceProvider = serviceProvider;
+        try
+        {
+            _factory = new ConnectionFactory() { HostName = "localhost" };
+            _connection = _factory.CreateConnection();
+            _channel = _connection.CreateModel();
+            _serviceProvider = serviceProvider;
+        }
+        catch (Exception)
+        {
+
+            //TODO set a log here
+        }
+
     }
- 
+
     public virtual void Connect()
     {
+        if (_channel == null)
+            throw new ArgumentNullException("The application could not stablish a connection to the queue");
+
         var queueName = _channel.QueueDeclare().QueueName;
         _channel.ExchangeDeclare(exchangeName, ExchangeType.Fanout);
         _channel.QueueBind(queue: queueName, exchange: exchangeName, routingKey: "");
         var consumer = new EventingBasicConsumer(_channel);
-        
+
         consumer.Received += delegate (object model, BasicDeliverEventArgs ea) {
             var body = ea.Body.ToArray();
             var json = Encoding.UTF8.GetString(body);
@@ -36,10 +48,10 @@ public class RabbitMQService : IRabbitMQService
             var chatHub = (IHubContext<StockChannelHub>)_serviceProvider.GetService(typeof(IHubContext<StockChannelHub>));
             chatHub.Clients.All.SendAsync("messageReceived", message);
         };
- 
+
         _channel.BasicConsume(queue: queueName, autoAck: true, consumer: consumer);
     }
- 
+
 }
 public interface IRabbitMQService
 {

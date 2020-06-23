@@ -3470,28 +3470,26 @@
     ]
   },
   "packageFolders": {
-    "/Users/work/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "D:\\Users\\dreamensys\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/work/RiderProjects/StockChannel/StockChannel.Test/StockChannel.Test.csproj",
+      "projectUniqueName": "D:\\Users\\dreamensys\\Documents\\projects\\stock-channel\\StockChannel.Test\\StockChannel.Test.csproj",
       "projectName": "StockChannel.Test",
-      "projectPath": "/Users/work/RiderProjects/StockChannel/StockChannel.Test/StockChannel.Test.csproj",
-      "packagesPath": "/Users/work/.nuget/packages/",
-      "outputPath": "/Users/work/RiderProjects/StockChannel/StockChannel.Test/obj/",
+      "projectPath": "D:\\Users\\dreamensys\\Documents\\projects\\stock-channel\\StockChannel.Test\\StockChannel.Test.csproj",
+      "packagesPath": "D:\\Users\\dreamensys\\.nuget\\packages\\",
+      "outputPath": "D:\\Users\\dreamensys\\Documents\\projects\\stock-channel\\StockChannel.Test\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "/Users/work/.nuget/NuGet/NuGet.Config"
+        "D:\\Users\\dreamensys\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -3540,7 +3538,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.301/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -5,7 +5,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="EntityFramework" Version="6.4.4" />
       <PackageReference Include="Microsoft.AspNet.Identity.EntityFramework" Version="2.2.3" />
       <PackageReference Include="Microsoft.AspNet.SignalR.Core" Version="2.4.1" />
       <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.0-preview.5.20279.2" />
