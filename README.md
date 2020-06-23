@@ -2,6 +2,9 @@
 
 This is a web-based chat built with SignalR and RabbitMQ.
 
+![alt text](https://github.com/dreamensys/stock-channel/blob/master/chat.png)
+
+
 ### Instructions to run the app
 1. Open the Package Manager Console from Visual Studio 2019 or higher and then run `EntityFrameworkCore\Update-Database`
 
